@@ -2,4 +2,4 @@ from django.apps import AppConfig
 
 
 class NewwebConfig(AppConfig):
-    name = 'newweb'
+    name = 'newsapplication'
