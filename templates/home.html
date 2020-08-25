@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+<style>
+div {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRunshoYnqmIqfxq21xKNgtIHxoH0oytK5toA&usqp=CAU');
+}
+</style>
+{% block body %}
+    <div style="color:white;background-color: cornflowerblue;margin-top: 2em;max-height:20%;width: 50%;padding: 30px;border-width:2px;border-style:solid;border-color:cornflowerblue;border-radius: 20px" class="container">
+    <form action="" method="POST">{% csrf_token %}
+        {{form.as_p}}
+        <button style="background-color:darkred ;border-radius: 10px" type="submit" class="btn btn-secondary" type="submit">Submit</button>
+    </form>
+    </div>
+<div style="padding: 10px;border-radius: 4px" class="container">
+    <div style="padding: 2px" class="row">
+
+        {% for x in res.articles %}
+            <div style="padding: 1px"class="col-">
+
+            <div class="card" style="background-image: sandybrown ;width: 13rem;border-style: solid;border-radius: 10px;min-height:37rem;border-color: darkred;border-width:.25rem;border-top-width: .5rem;border-bottom-width: .5rem">
+                <style>
+div {
+  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTBoLSWGKrYK2fpBLKLgju0P_cpd47J3xA_Uw&usqp=CAU');
+}
+</style>
+                <img style="min-height:20%;max-height:30%;background-color: brown;border-radius:10px 10px 0px 0px" src="{{ x.urlToImage }}" class="card-img-top" alt="{{ x.source.name }}">
+                    <div class="card-body">
+                    <h5 class="card-title" style="background-color: darkslateblue;color: antiquewhite;text-align:center;border-radius: 5px">{{ x.title }}</h5>
+                    <p class="card-text" style="background-color: darkred;color: antiquewhite;text-align:center;border-radius: 5px">{{ x.description|truncatechars:150 }}</p>
+                    <a href="{{ x.url }}" target="_blank" class="btn btn-primary" style="background-color: dimgrey">Read more</a>
+                    </div>
+            </div>
+            </div>
+
+        {% endfor %}
+    </div>
+    </div>
+</div>
+
+{% endblock body %}
